@@ -6,7 +6,7 @@
 /*   By: asaber <asaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 19:26:29 by asaber            #+#    #+#             */
-/*   Updated: 2024/02/15 19:58:55 by asaber           ###   ########.fr       */
+/*   Updated: 2024/02/15 20:02:23 by asaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ void cnvChar(std::string input)
 void cnvInt(std::string input)
 {
 	int i = std::stoi(input);
-	std::cout << i << std::endl;
 	std::cout << "char: ";
 	if (i >= 32 && i != 127 && i <= 255)
 		std::cout << "'" << static_cast<char>(i) << "'" << std::endl;
@@ -148,25 +147,21 @@ void ScalarConverter::convert(std::string input)
 		}
 		case 1:
 		{
-			std::cout << "is char" << std::endl;
 			cnvChar(input);
 			break;
 		}
 		case 2:
 		{
-			std::cout << "is int" << std::endl;
 			cnvInt(input);
 			break;
 		}
 		case 3:
 		{
-			std::cout << "is float" << std::endl;
 			cnvFloat(input);
 			break;
 		}
 		case 4:
 		{
-			std::cout << "is double" << std::endl;
 			cnvDouble(input);
 			break;
 		}
