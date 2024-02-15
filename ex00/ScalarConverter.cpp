@@ -6,7 +6,7 @@
 /*   By: asaber <asaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 19:26:29 by asaber            #+#    #+#             */
-/*   Updated: 2024/02/14 23:12:17 by asaber           ###   ########.fr       */
+/*   Updated: 2024/02/15 19:58:55 by asaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ ScalarConverter& ScalarConverter::operator=(ScalarConverter const &other)
 bool ifisChar(std::string input)
 {
 	
-	if (input.length() == 1)
+	if (input.length() == 1 && !isdigit(input[0]))
 		return true;
 	return false;
 }
@@ -82,6 +82,59 @@ void cnvChar(std::string input)
 	std::cout << "float: " << static_cast<float>(c) << ".0f" << std::endl;
 	std::cout << "double: " << static_cast<double>(c) << ".0" << std::endl;
 }
+void cnvInt(std::string input)
+{
+	int i = std::stoi(input);
+	std::cout << i << std::endl;
+	std::cout << "char: ";
+	if (i >= 32 && i != 127 && i <= 255)
+		std::cout << "'" << static_cast<char>(i) << "'" << std::endl;
+	else if ((i >= 0 && i <= 31) || (int)i == 127)
+		std::cout << "Non displayable" << std::endl;
+	else
+		std::cout << "impossible" << std::endl;
+	std::cout << "int: " << i << std::endl;
+	std::cout << "float: " << static_cast<float>(i) << ".0f" << std::endl;
+	std::cout << "double: " << static_cast<double>(i) << ".0" << std::endl;
+}
+
+void	cnvFloat(std::string input)
+{
+	float f = std::stof(input);
+	std::cout << "char: ";
+	if (f >= 32 && (int)f != 127 && f <= 255)
+		std::cout << "'" << static_cast<char>(f) << "'" << std::endl;
+	else if (f >= 0 && f <= 31 && (int)f == 127)
+		std::cout << "Non displayable" << std::endl;
+	else
+		std::cout << "impossible" << std::endl;
+	std::cout << "int: ";
+	if (f >= std::numeric_limits<int>::min() && f <= std::numeric_limits<int>::max())
+		std::cout << static_cast<int>(f) << std::endl;
+	else
+		std::cout << "impossible" << std::endl;
+	std::cout << "float: " << f << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(f) << std::endl;
+}
+
+void cnvDouble(std::string input)
+{
+	double d = std::stod(input);
+	std::cout << "char: ";
+	if (d >= 32 && (int)d != 127 && d <= 255)
+		std::cout << "'" << static_cast<char>(d) << "'" << std::endl;
+	else if (d >= 0 && d <= 31 && (int)d == 127)
+		std::cout << "Non displayable" << std::endl;
+	else
+		std::cout << "impossible" << std::endl;
+	std::cout << "int: ";
+	if (d >= std::numeric_limits<int>::min() && d <= std::numeric_limits<int>::max())
+		std::cout << static_cast<int>(d) << std::endl;
+	else
+		std::cout << "impossible" << std::endl;
+	std::cout << "float: " << static_cast<float>(d) << "f" << std::endl;
+	std::cout << "double: " << d << std::endl;
+}
 
 void ScalarConverter::convert(std::string input)
 {
@@ -95,7 +148,26 @@ void ScalarConverter::convert(std::string input)
 		}
 		case 1:
 		{
+			std::cout << "is char" << std::endl;
 			cnvChar(input);
+			break;
+		}
+		case 2:
+		{
+			std::cout << "is int" << std::endl;
+			cnvInt(input);
+			break;
+		}
+		case 3:
+		{
+			std::cout << "is float" << std::endl;
+			cnvFloat(input);
+			break;
+		}
+		case 4:
+		{
+			std::cout << "is double" << std::endl;
+			cnvDouble(input);
 			break;
 		}
 	}
