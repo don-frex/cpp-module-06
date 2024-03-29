@@ -6,7 +6,7 @@
 /*   By: asaber <asaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 19:26:29 by asaber            #+#    #+#             */
-/*   Updated: 2024/02/15 20:02:23 by asaber           ###   ########.fr       */
+/*   Updated: 2024/03/22 22:39:13 by asaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void cnvInt(std::string input)
 {
 	int i = std::stoi(input);
 	std::cout << "char: ";
-	if (i >= 32 && i != 127 && i <= 255)
+	if (i >= 32 && i < 127)
 		std::cout << "'" << static_cast<char>(i) << "'" << std::endl;
 	else if ((i >= 0 && i <= 31) || (int)i == 127)
 		std::cout << "Non displayable" << std::endl;
@@ -101,7 +101,7 @@ void	cnvFloat(std::string input)
 {
 	float f = std::stof(input);
 	std::cout << "char: ";
-	if (f >= 32 && (int)f != 127 && f <= 255)
+	if (f >= 32 && (int)f < 127)
 		std::cout << "'" << static_cast<char>(f) << "'" << std::endl;
 	else if (f >= 0 && f <= 31 && (int)f == 127)
 		std::cout << "Non displayable" << std::endl;
@@ -120,7 +120,7 @@ void cnvDouble(std::string input)
 {
 	double d = std::stod(input);
 	std::cout << "char: ";
-	if (d >= 32 && (int)d != 127 && d <= 255)
+	if (d >= 32 && (int)d < 127)
 		std::cout << "'" << static_cast<char>(d) << "'" << std::endl;
 	else if (d >= 0 && d <= 31 && (int)d == 127)
 		std::cout << "Non displayable" << std::endl;
@@ -140,11 +140,6 @@ void ScalarConverter::convert(std::string input)
 	size_t type = pars_n_checkType(input);
 	switch (type)
 	{
-		case 0:
-		{
-			std::cout << "sir f7alk ^_^" << std::endl;
-			break;
-		}
 		case 1:
 		{
 			cnvChar(input);
@@ -163,6 +158,11 @@ void ScalarConverter::convert(std::string input)
 		case 4:
 		{
 			cnvDouble(input);
+			break;
+		}
+		default:
+		{
+			std::cout << "unknown type!!" << std::endl;
 			break;
 		}
 	}
