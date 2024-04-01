@@ -6,7 +6,7 @@
 /*   By: asaber <asaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 21:20:33 by asaber            #+#    #+#             */
-/*   Updated: 2024/02/11 21:56:13 by asaber           ###   ########.fr       */
+/*   Updated: 2024/04/01 17:42:48 by asaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ bool isNonPrintible(std::string str)
 
 int main(int ac, char **av)
 {
-	ScalarConverter ob;
+	// ScalarConverter ob;
 
 	if (ac == 2 && std::strlen(av[1]) && !isNonPrintible(av[1]))
-		ob.convert(av[1]);
+		ScalarConverter::convert(av[1]);
 	else
 		std::cout << "error in passing arguments please try again!!." << std::endl;
 	return 0;
