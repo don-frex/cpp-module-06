@@ -6,7 +6,7 @@
 /*   By: asaber <asaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 14:10:42 by asaber            #+#    #+#             */
-/*   Updated: 2024/02/19 23:12:12 by asaber           ###   ########.fr       */
+/*   Updated: 2024/04/01 18:00:44 by asaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,14 @@
 
 class Serializer
 {
-public:
-	Serializer();
-	Serializer(Serializer const &other);
-	~Serializer();
-	Serializer& operator=(Serializer const &other);
-	uintptr_t serialize(Data* ptr);
-	Data* deserialize(uintptr_t raw);
+	private:
+		Serializer();
+		Serializer(Serializer const &other);
+		~Serializer();
+		Serializer& operator=(Serializer const &other);
+	public:
+		static uintptr_t serialize(Data* ptr);
+		static Data* deserialize(uintptr_t raw);
 };
 
 #endif
